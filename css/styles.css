@@ -1,0 +1,62 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&family=Quicksand:wght@300..700&display=swap');
+
+body {
+    font-family: 'Quicksand', sans-serif;
+    background-color: #fdf6f6;
+}
+.font-fredoka {
+    font-family: 'Fredoka', sans-serif;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-10px) rotate(1deg); }
+}
+@keyframes shake {
+    0%, 100% { transform: translateX(0) rotate(0); }
+    20%, 60% { transform: translateX(-8px) rotate(-3deg); }
+    40%, 80% { transform: translateX(8px) rotate(3deg); }
+}
+@keyframes bounce-custom {
+    0%, 100% { transform: translateY(0) scale(1); }
+    50% { transform: translateY(-15px) scale(0.95); }
+}
+@keyframes heartbeat {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.08); }
+}
+@keyframes think-glow {
+    0%, 100% { filter: drop-shadow(0 0 5px rgba(167, 139, 250, 0.4)); }
+    50% { filter: drop-shadow(0 0 20px rgba(167, 139, 250, 0.8)); }
+}
+
+.anim-idle {
+    animation: float 4s ease-in-out infinite;
+}
+.anim-shake {
+    animation: shake 0.3s ease-in-out infinite;
+}
+.anim-eat {
+    animation: bounce-custom 0.5s ease-in-out 2;
+}
+.anim-heartbeat {
+    animation: heartbeat 0.8s ease-in-out infinite;
+}
+.anim-thinking {
+    animation: float 2s ease-in-out infinite, think-glow 2s ease-in-out infinite;
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+::-webkit-scrollbar-track {
+    background: #fff5f5;
+    border-radius: 10px;
+}
+::-webkit-scrollbar-thumb {
+    background: #ffd3b6;
+    border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #ffaaa5;
+}

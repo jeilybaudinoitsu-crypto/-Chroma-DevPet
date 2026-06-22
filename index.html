@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chroma - Aprende DevTools jugando</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="min-h-screen text-slate-700 flex flex-col selection:bg-pink-200">
+
+    <header class="bg-white/80 backdrop-blur-md border-b border-pink-100 py-3 px-6 sticky top-0 z-50 shadow-sm flex flex-wrap justify-between items-center">
+        <div class="flex items-center space-x-3">
+            <div class="w-10 h-10 bg-gradient-to-tr from-pink-300 via-purple-300 to-blue-300 rounded-full flex items-center justify-center shadow-md animate-pulse">
+                <span class="text-white font-bold text-xl font-fredoka">C</span>
+            </div>
+            <div>
+                <h1 class="text-xl font-bold text-pink-500 font-fredoka tracking-wide">Chroma DevPet</h1>
+                <p class="text-[10px] text-purple-400 font-semibold uppercase tracking-wider">Aprende la consola jugando</p>
+            </div>
+        </div>
+        <nav class="hidden md:flex gap-6 text-sm font-semibold text-slate-600">
+            <a href="#welcome" class="hover:text-pink-500 transition-colors">Inicio</a>
+            <a href="#how-to" class="hover:text-pink-500 transition-colors">¿Cómo abrirla?</a>
+            <a href="#tabs-guide" class="hover:text-pink-500 transition-colors">Pestañas</a>
+            <a href="#playground" class="hover:text-pink-500 transition-colors text-pink-600">Patio de Pruebas & IA</a>
+        </nav>
+        <div class="flex items-center space-x-2 mt-2 sm:mt-0">
+            <a href="#playground" class="px-4 py-2 bg-pink-500 hover:bg-pink-600 text-white rounded-full text-xs font-bold flex items-center gap-1 shadow-md transition-all active:scale-95">
+                <i data-lucide="play" class="w-3.5 h-3.5"></i> ¡Practicar ahora!
+            </a>
+        </div>
+    </header>
+
+    <section id="welcome" class="py-12 md:py-20 px-4 max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-12">
+        <div class="flex-1 space-y-6 text-center md:text-left">
+            <span class="bg-pink-100 text-pink-600 font-bold px-3 py-1 rounded-full text-xs uppercase tracking-wider">¡Aprende Jugando!</span>
+            <h2 class="font-fredoka text-4xl md:text-5xl lg:text-6xl text-pink-500 font-black leading-tight">
+                Domina las Herramientas de Desarrollador de Chrome
+            </h2>
+            <p class="text-base md:text-lg text-slate-600 leading-relaxed">
+                ¡Hola, soy <strong>Chroma</strong>! 🌸 Tu adorable guía virtual pastel. Te enseñaré a ver la magia detrás de cada página web, a descubrir errores y a usar la consola como un desarrollador profesional. ¡Es súper fácil y divertido!
+            </p>
+            <div class="flex flex-wrap gap-4 justify-center md:justify-start pt-2">
+                <a href="#how-to" class="bg-pink-100 hover:bg-pink-200 text-pink-700 font-bold px-6 py-3 rounded-2xl shadow-sm transition-all flex items-center gap-2">
+                    <i data-lucide="book-open" class="w-5 h-5"></i> Ver Tutorial
+                </a>
+                <a href="#playground" class="bg-purple-100 hover:bg-purple-200 text-purple-700 font-bold px-6 py-3 rounded-2xl shadow-sm transition-all flex items-center gap-2">
+                    <i data-lucide="sparkles" class="w-5 h-5"></i> Hablar con IA
+                </a>
+            </div>
+        </div>
+        <div class="flex-1 flex justify-center relative">
+            <div class="absolute w-72 h-72 bg-purple-100 rounded-full mix-blend-multiply filter blur-2xl opacity-60 animate-pulse -top-4 -left-4"></div>
+            <div class="absolute w-72 h-72 bg-pink-100 rounded-full mix-blend-multiply filter blur-2xl opacity-60 animate-pulse -bottom-8 right-4" style="animation-delay: 1s;"></div>
+
+            <div class="relative bg-white/70 border-4 border-pink-100 rounded-3xl p-8 shadow-xl anim-idle backdrop-blur-sm max-w-[320px] text-center">
+                <div class="w-48 h-48 mx-auto">
+                    <svg viewBox="0 0 200 200" class="w-full h-full">
+                        <ellipse cx="100" cy="180" rx="60" ry="10" fill="#edd0d0" opacity="0.6"/>
+                        <path d="M 60,60 C 40,20 20,40 45,75 Z" fill="#ffaaa5" stroke="#f6938d" stroke-width="3"/>
+                        <path d="M 57,55 C 44,28 30,42 47,67 Z" fill="#ffccd5"/>
+                        <path d="M 140,60 C 160,20 180,40 155,75 Z" fill="#ffaaa5" stroke="#f6938d" stroke-width="3"/>
+                        <path d="M 143,55 C 156,28 170,42 153,67 Z" fill="#ffccd5"/>
+                        <circle cx="100" cy="115" r="65" fill="#ffd3b6" stroke="#fca17d" stroke-width="4"/>
+                        <ellipse cx="100" cy="135" rx="40" ry="30" fill="#fff5f5" opacity="0.9"/>
+                        <g><circle cx="75" cy="105" r="8" fill="#5a413e"/><circle cx="72" cy="102" r="3" fill="#ffffff"/></g>
+                        <g><circle cx="125" cy="105" r="8" fill="#5a413e"/><circle cx="122" cy="102" r="3" fill="#ffffff"/></g>
+                        <ellipse cx="63" cy="118" rx="8" ry="5" fill="#ff8b94" opacity="0.6"/>
+                        <ellipse cx="137" cy="118" rx="8" ry="5" fill="#ff8b94" opacity="0.6"/>
+                        <path d="M 90,123 Q 100,135 110,123" fill="none" stroke="#5a413e" stroke-width="3.5" stroke-linecap="round"/>
+                        <circle cx="50" cy="150" r="12" fill="#ffd3b6" stroke="#fca17d" stroke-width="3"/>
+                        <circle cx="150" cy="150" r="12" fill="#ffd3b6" stroke="#fca17d" stroke-width="3"/>
+                        <rect x="58" y="97" width="30" height="16" rx="4" fill="none" stroke="#8b5cf6" stroke-width="3" opacity="0.8"/>
+                        <rect x="112" y="97" width="30" height="16" rx="4" fill="none" stroke="#8b5cf6" stroke-width="3" opacity="0.8"/>
+                        <line x1="88" y1="105" x2="112" y2="105" stroke="#8b5cf6" stroke-width="3" opacity="0.8"/>
+                    </svg>
+                </div>
+                <div class="mt-4 bg-pink-50 text-pink-600 text-xs font-bold rounded-xl p-2.5 border border-pink-200">
+                    "¡Ve al Patio de Pruebas más abajo para jugar conmigo y darle de comer a mi consola!"
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="how-to" class="py-12 bg-white border-y border-pink-100">
+        <div class="max-w-6xl mx-auto px-4">
+            <h2 class="font-fredoka text-3xl text-center text-pink-500 font-bold mb-8">Cómo Abrir la Consola de Chrome</h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="p-6 rounded-3xl bg-pink-50 border border-pink-100 flex flex-col items-center text-center shadow-sm hover:shadow-md transition-all">
+                    <div class="w-12 h-12 bg-white rounded-2xl flex items-center justify-center mb-4 text-pink-500 shadow-sm border border-pink-100">
+                        <i data-lucide="keyboard" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="font-fredoka font-bold text-lg mb-2 text-pink-700">Atajo de Teclado</h3>
+                    <p class="text-sm text-slate-600 mb-4">La forma más rápida para desarrolladores veloces.</p>
+                    <div class="mt-auto space-y-2 w-full">
+                        <div class="bg-white py-1.5 px-3 rounded-lg text-xs font-mono font-semibold border border-pink-100">
+                            Windows: <kbd class="bg-slate-50 px-1.5 py-0.5 rounded shadow-sm border">F12</kbd> o <kbd class="bg-slate-50 px-1.5 py-0.5 rounded shadow-sm border">Ctrl+Shift+I</kbd>
+                        </div>
+                        <div class="bg-white py-1.5 px-3 rounded-lg text-xs font-mono font-semibold border border-pink-100">
+                            Mac: <kbd class="bg-slate-50 px-1.5 py-0.5 rounded shadow-sm border">Cmd+Option+I</kbd>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="p-6 rounded-3xl bg-blue-50 border border-blue-100 flex flex-col items-center text-center shadow-sm hover:shadow-md transition-all">
+                    <div class="w-12 h-12 bg-white rounded-2xl flex items-center justify-center mb-4 text-blue-500 shadow-sm border border-blue-100">
+                        <i data-lucide="mouse-pointer-click" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="font-fredoka font-bold text-lg mb-2 text-blue-700">Click Derecho</h3>
+                    <p class="text-sm text-slate-600 mb-4">Haz click derecho sobre cualquier parte de esta web y selecciona <strong class="text-blue-600">"Inspeccionar"</strong>.</p>
+                    <div class="mt-auto bg-white py-2 px-3 rounded-xl text-xs text-blue-800 font-semibold w-full border border-blue-100">
+                        💡 ¡Te llevará directo al elemento que clickeaste!
+                    </div>
+                </div>
+
+                <div class="p-6 rounded-3xl bg-purple-50 border border-purple-100 flex flex-col items-center text-center shadow-sm hover:shadow-md transition-all">
+                    <div class="w-12 h-12 bg-white rounded-2xl flex items-center justify-center mb-4 text-purple-500 shadow-sm border border-purple-100">
+                        <i data-lucide="menu" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="font-fredoka font-bold text-lg mb-2 text-purple-700">Menú de Chrome</h3>
+                    <p class="text-sm text-slate-600 mb-4">Usando el ratón y los menús integrados del navegador.</p>
+                    <div class="mt-auto text-left w-full space-y-1 text-xs text-purple-800 bg-white p-3 rounded-xl border border-purple-100">
+                        <div>1. Click en los <strong class="font-bold">Tres Puntos</strong> (esquina)</div>
+                        <div>2. Ve a <strong class="font-bold">Más herramientas</strong></div>
+                        <div>3. Elije <strong class="font-bold">Herr. para desarrolladores</strong></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="tabs-guide" class="py-12 max-w-6xl mx-auto px-4">
+        <div class="text-center mb-10">
+            <span class="bg-pink-100 text-pink-600 font-bold px-3 py-1 rounded-full text-xs">Conoce tu Herramienta</span>
+            <h2 class="font-fredoka text-3xl md:text-4xl text-pink-500 font-bold mt-2">La Guía de Pestañas de DevTools</h2>
+            <p class="text-slate-500 max-w-2xl mx-auto mt-2 text-sm md:text-base">
+                Cuando abras la consola, verás varias pestañas. ¡No te asustes! Aquí tienes una guía rápida de las 4 más importantes.
+            </p>
+        </div>
+
+        <div class="space-y-6">
+            <div class="flex flex-col lg:flex-row items-stretch bg-white border border-pink-100 rounded-3xl overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+                <div class="lg:w-1/3 bg-pink-50 p-8 flex flex-col justify-between border-r border-pink-100">
+                    <div>
+                        <span class="bg-white text-pink-600 text-xs font-bold px-2.5 py-1 rounded-full uppercase shadow-sm">Pestaña 1</span>
+                        <h3 class="font-fredoka text-2xl font-bold text-pink-700 mt-3 flex items-center gap-2">
+                            <i data-lucide="layout" class="w-6 h-6"></i> Elements (Elementos)
+                        </h3>
+                        <p class="text-sm text-slate-600 mt-2">
+                            Es el esqueleto interactivo de la página. Puedes ver y modificar el HTML y el CSS en tiempo real sin romper nada de forma permanente.
+                        </p>
+                    </div>
+                    <div class="mt-6 bg-white p-3 rounded-2xl text-xs border border-pink-200 text-slate-700">
+                        <strong>📌 Tarea clave:</strong> Cambiar el color de un botón o editar el texto de un párrafo inspeccionando la web.
+                    </div>
+                </div>
+                <div class="flex-1 p-8 bg-slate-900 font-mono text-xs flex flex-col justify-between text-slate-300">
+                    <div>
+                        <div class="flex justify-between items-center mb-4 text-slate-500 border-b border-slate-700 pb-2">
+                            <span>VISTA PREVIA DE ELEMENTS</span>
+                            <span class="text-[10px] bg-pink-900/50 text-pink-300 px-2 py-0.5 rounded border border-pink-800">HTML Vivo</span>
+                        </div>
+                        <pre class="select-all overflow-x-auto leading-relaxed">
+&lt;<span class="text-pink-400">div</span> <span class="text-sky-300">id</span>="<span class="text-emerald-300">mascota</span>" <span class="text-sky-300">class</span>="<span class="text-emerald-300">cute-pet anim-idle</span>"&gt;
+  &lt;<span class="text-pink-400">h1</span>&gt;¡Hola, soy Chroma!&lt;/<span class="text-pink-400">h1</span>&gt;
+  &lt;<span class="text-pink-400">p</span>&gt;Cambia mi texto desde el inspector.&lt;/<span class="text-pink-400">p</span>&gt;
+&lt;/<span class="text-pink-400">div</span>&gt;</pre>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex flex-col lg:flex-row items-stretch bg-white border border-blue-100 rounded-3xl overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+                <div class="lg:w-1/3 bg-blue-50 p-8 flex flex-col justify-between border-r border-blue-100">
+                    <div>
+                        <span class="bg-white text-blue-600 text-xs font-bold px-2.5 py-1 rounded-full uppercase shadow-sm">Pestaña 2</span>
+                        <h3 class="font-fredoka text-2xl font-bold text-blue-700 mt-3 flex items-center gap-2">
+                            <i data-lucide="terminal" class="w-6 h-6"></i> Console (Consola)
+                        </h3>
+                        <p class="text-sm text-slate-600 mt-2">
+                            Tu canal directo de comunicación con JavaScript. Aquí puedes ver errores, imprimir logs y escribir código interactivo.
+                        </p>
+                    </div>
+                    <div class="mt-6 bg-white p-3 rounded-2xl text-xs border border-blue-200 text-slate-700">
+                        <strong>📌 Tarea clave:</strong> Ejecutar operaciones matemáticas, ver alertas o dar instrucciones.
+                    </div>
+                </div>
+                <div class="flex-1 p-8 bg-slate-900 text-emerald-400 font-mono text-xs flex flex-col justify-between">
+                    <div>
+                        <div class="flex justify-between items-center mb-4 text-slate-500 border-b border-slate-700 pb-2">
+                            <span>CONSOLA INTERACTIVA</span>
+                            <span class="text-[10px] bg-blue-900/50 text-blue-300 px-2 py-0.5 rounded border border-blue-800">Javascript</span>
+                        </div>
+                        <div class="space-y-3">
+                            <div class="flex gap-2">
+                                <span class="text-blue-400">&gt;</span>
+                                <span class="text-slate-200">console.log("¡Chroma dice hola!");</span>
+                            </div>
+                            <div class="text-slate-400 ml-4 border-l-2 border-slate-600 pl-2">
+                                ¡Chroma dice hola!
+                            </div>
+                            <div class="flex gap-2 pt-2">
+                                <span class="text-blue-400">&gt;</span>
+                                <span class="text-slate-200">console.error("¡Falta comida!");</span>
+                            </div>
+                            <div class="text-red-400 ml-4 bg-red-950/30 p-1.5 rounded border-l-2 border-red-500 flex items-center gap-1">
+                                ❌ ¡Falta comida!
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex flex-col lg:flex-row items-stretch bg-white border border-emerald-100 rounded-3xl overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+                <div class="lg:w-1/3 bg-emerald-50 p-8 flex flex-col justify-between border-r border-emerald-100">
+                    <div>
+                        <span class="bg-white text-emerald-600 text-xs font-bold px-2.5 py-1 rounded-full uppercase shadow-sm">Pestaña 3</span>
+                        <h3 class="font-fredoka text-2xl font-bold text-emerald-700 mt-3 flex items-center gap-2">
+                            <i data-lucide="activity" class="w-6 h-6"></i> Network (Red)
+                        </h3>
+                        <p class="text-sm text-slate-600 mt-2">
+                            Muestra todo el tráfico de internet de la página. Qué imágenes se descargan, llamadas a APIs (como la de Gemini) y tiempos de carga.
+                        </p>
+                    </div>
+                    <div class="mt-6 bg-white p-3 rounded-2xl text-xs border border-emerald-200 text-slate-700">
+                        <strong>📌 Tarea clave:</strong> Diagnosticar por qué una web carga lento o simular una red 3G.
+                    </div>
+                </div>
+                <div class="flex-1 p-8 bg-slate-900 font-mono text-xs flex flex-col justify-between text-slate-300">
+                    <div>
+                        <div class="flex justify-between items-center mb-4 text-slate-500 border-b border-slate-700 pb-2">
+                            <span>MONITOR DE RED DE CHROME</span>
+                        </div>
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-left">
+                                <thead>
+                                    <tr class="text-slate-500 border-b border-slate-700">
+                                        <th class="pb-2 font-normal">Name</th>
+                                        <th class="pb-2 font-normal">Status</th>
+                                        <th class="pb-2 font-normal">Type</th>
+                                        <th class="pb-2 font-normal">Time</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="border-b border-slate-800">
+                                        <td class="py-2.5 text-purple-400">gemini-api/generate</td>
+                                        <td class="py-2.5 text-emerald-400">200 OK</td>
+                                        <td class="py-2.5">fetch</td>
+                                        <td class="py-2.5 text-amber-400">850ms</td>
+                                    </tr>
+                                    <tr class="border-b border-slate-800">
+                                        <td class="py-2.5 text-sky-400">style.css</td>
+                                        <td class="py-2.5 text-emerald-400">200 OK</td>
+                                        <td class="py-2.5">stylesheet</td>
+                                        <td class="py-2.5 text-emerald-400">45ms</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="playground" class="py-12 bg-pink-50/50 border-t border-pink-100 flex-1">
+        <div class="max-w-7xl w-full mx-auto px-4 lg:px-8">
+            <div class="text-center mb-10">
+                <span class="bg-purple-100 text-purple-600 font-bold px-3 py-1 rounded-full text-xs">Zona Práctica</span>
+                <h2 class="font-fredoka text-3xl md:text-4xl text-purple-600 font-bold mt-2">Patio de Pruebas: Chroma & IA</h2>
+                <p class="text-slate-500 max-w-2xl mx-auto mt-2 text-sm">
+                    Interactúa con Chroma para disparar logs en tu consola real. Usa el chat de la derecha para hablar con ella usando la API de Gemini. ¡Abre tu consola (<kbd class="px-1 bg-slate-200 rounded text-slate-700">F12</kbd>) y mira lo que pasa!
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+                <div class="lg:col-span-5 flex flex-col space-y-6">
+
+                    <div class="bg-white rounded-3xl p-6 shadow-lg shadow-pink-100/40 border border-pink-100 flex flex-col items-center justify-between min-h-[460px] relative overflow-hidden">
+                        <div class="absolute -top-24 -left-24 w-48 h-48 bg-purple-100 rounded-full mix-blend-multiply filter blur-xl opacity-70"></div>
+                        <div class="absolute -bottom-24 -right-24 w-48 h-48 bg-pink-100 rounded-full mix-blend-multiply filter blur-xl opacity-70"></div>
+
+                        <div class="w-full flex justify-between items-center z-10">
+                            <div class="flex items-center space-x-2">
+                                <span id="mascota-nivel" class="text-xs bg-pink-100 text-pink-600 px-2.5 py-1 rounded-full font-bold shadow-sm">Nivel: Jr. Developer</span>
+                            </div>
+                            <div class="flex items-center space-x-1 text-pink-500 bg-pink-50 border border-pink-100 px-3 py-1 rounded-full shadow-sm">
+                                <i data-lucide="heart" class="w-4 h-4 fill-pink-500 text-pink-500 anim-heartbeat"></i>
+                                <span id="paciencia-texto" class="text-xs font-extrabold">Amor: 100%</span>
+                            </div>
+                        </div>
+
+                        <div class="my-8 relative flex flex-col items-center justify-center z-10">
+                            <div id="burbuja-mascota" class="absolute -top-16 bg-white border border-pink-200 text-pink-600 text-xs py-2 px-4 rounded-2xl shadow-lg font-bold transition-all duration-300 scale-0 origin-bottom opacity-0 max-w-[220px] text-center z-20">
+                                ¡Hola! Soy Chroma 🌸
+                            </div>
+
+                            <div id="mascota-svg-container" class="w-56 h-56 transition-all duration-300 cursor-pointer active:scale-95 anim-idle" onclick="interactuarMascota()">
+                                <svg viewBox="0 0 200 200" class="w-full h-full select-none">
+                                    <ellipse cx="100" cy="180" rx="60" ry="10" fill="#edd0d0" opacity="0.6"/>
+                                    <path d="M 60,60 C 40,20 20,40 45,75 Z" id="oreja-izq" fill="#ffaaa5" stroke="#f6938d" stroke-width="3"/>
+                                    <path d="M 57,55 C 44,28 30,42 47,67 Z" fill="#ffccd5"/>
+                                    <path d="M 140,60 C 160,20 180,40 155,75 Z" id="oreja-der" fill="#ffaaa5" stroke="#f6938d" stroke-width="3"/>
+                                    <path d="M 143,55 C 156,28 170,42 153,67 Z" fill="#ffccd5"/>
+                                    <circle cx="100" cy="115" r="65" id="cuerpo" fill="#ffd3b6" stroke="#fca17d" stroke-width="4"/>
+                                    <ellipse cx="100" cy="135" rx="40" ry="30" fill="#fff5f5" opacity="0.9"/>
+                                    <g id="ojo-izq">
+                                        <circle cx="75" cy="105" r="8" fill="#5a413e"/>
+                                        <circle cx="72" cy="102" r="3" fill="#ffffff"/>
+                                    </g>
+                                    <g id="ojo-der">
+                                        <circle cx="125" cy="105" r="8" fill="#5a413e"/>
+                                        <circle cx="122" cy="102" r="3" fill="#ffffff"/>
+                                    </g>
+                                    <ellipse cx="63" cy="118" rx="8" ry="5" fill="#ff8b94" opacity="0.6" id="mejilla-izq"/>
+                                    <ellipse cx="137" cy="118" rx="8" ry="5" fill="#ff8b94" opacity="0.6" id="mejilla-der"/>
+                                    <path d="M 94,118 Q 100,123 106,118" fill="none" stroke="#5a413e" stroke-width="3.5" stroke-linecap="round" id="boca"/>
+                                    <circle cx="50" cy="150" r="12" fill="#ffd3b6" stroke="#fca17d" stroke-width="3"/>
+                                    <circle cx="150" cy="150" r="12" fill="#ffd3b6" stroke="#fca17d" stroke-width="3"/>
+                                    <g id="gafas-ia" class="opacity-0 transition-opacity duration-300">
+                                        <rect x="58" y="97" width="30" height="16" rx="4" fill="none" stroke="#8b5cf6" stroke-width="3"/>
+                                        <rect x="112" y="97" width="30" height="16" rx="4" fill="none" stroke="#8b5cf6" stroke-width="3"/>
+                                        <line x1="88" y1="105" x2="112" y2="105" stroke="#8b5cf6" stroke-width="3"/>
+                                    </g>
+                                </svg>
+                            </div>
+
+                            <div id="comida-efecto" class="absolute pointer-events-none text-4xl opacity-0 transition-all duration-500 scale-50 z-20">
+                                🍪
+                            </div>
+                        </div>
+
+                        <div class="w-full bg-pink-50/80 p-4 rounded-2xl border border-pink-200 z-10">
+                            <p class="text-xs font-bold text-center text-pink-500 mb-3 font-fredoka uppercase tracking-wider">¡Aliméntala y mira tu consola!</p>
+                            <div class="grid grid-cols-4 gap-2">
+                                <button onclick="alimentarMascota('🍪', 'Galleta', 'log')" class="flex flex-col items-center bg-white p-2 rounded-xl border border-pink-100 hover:border-pink-300 hover:bg-pink-50 transition-all shadow-sm active:scale-95 group">
+                                    <span class="text-2xl group-hover:scale-110 transition-transform">🍪</span>
+                                    <span class="text-[10px] font-bold text-slate-500 mt-1">.log()</span>
+                                </button>
+                                <button onclick="alimentarMascota('🍦', 'Helado', 'info')" class="flex flex-col items-center bg-white p-2 rounded-xl border border-pink-100 hover:border-pink-300 hover:bg-pink-50 transition-all shadow-sm active:scale-95 group">
+                                    <span class="text-2xl group-hover:scale-110 transition-transform">🍦</span>
+                                    <span class="text-[10px] font-bold text-slate-500 mt-1">.info()</span>
+                                </button>
+                                <button onclick="alimentarMascota('🍋', 'Limón', 'warn')" class="flex flex-col items-center bg-white p-2 rounded-xl border border-pink-100 hover:border-pink-300 hover:bg-pink-50 transition-all shadow-sm active:scale-95 group">
+                                    <span class="text-2xl group-hover:scale-110 transition-transform">🍋</span>
+                                    <span class="text-[10px] font-bold text-slate-500 mt-1">.warn()</span>
+                                </button>
+                                <button onclick="alimentarMascota('🌶️', 'Ají', 'error')" class="flex flex-col items-center bg-white p-2 rounded-xl border border-pink-100 hover:border-pink-300 hover:bg-pink-50 transition-all shadow-sm active:scale-95 group">
+                                    <span class="text-2xl group-hover:scale-110 transition-transform">🌶️</span>
+                                    <span class="text-[10px] font-bold text-slate-500 mt-1">.error()</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-gradient-to-r from-purple-50 to-indigo-50 border border-purple-100 rounded-3xl p-5 shadow-sm">
+                        <h4 class="text-xs font-bold text-indigo-600 uppercase tracking-widest mb-3 font-fredoka flex items-center gap-1">
+                            <i data-lucide="play" class="w-3.5 h-3.5"></i> Lanzadores Avanzados
+                        </h4>
+                        <div class="grid grid-cols-2 gap-2.5">
+                            <button onclick="lanzarTabla()" class="bg-white hover:bg-indigo-50 border border-indigo-100 text-indigo-600 font-bold py-2 px-3 rounded-xl text-xs flex items-center justify-center gap-1.5 transition-all shadow-sm active:scale-95">
+                                <i data-lucide="table" class="w-3.5 h-3.5"></i> .table()
+                            </button>
+                            <button onclick="lanzarAsociacion()" class="bg-white hover:bg-indigo-50 border border-indigo-100 text-indigo-600 font-bold py-2 px-3 rounded-xl text-xs flex items-center justify-center gap-1.5 transition-all shadow-sm active:scale-95">
+                                <i data-lucide="terminal" class="w-3.5 h-3.5"></i> .assert()
+                            </button>
+                            <button onclick="lanzarGrupo()" class="bg-white hover:bg-indigo-50 border border-indigo-100 text-indigo-600 font-bold py-2 px-3 rounded-xl text-xs flex items-center justify-center gap-1.5 transition-all shadow-sm active:scale-95">
+                                <i data-lucide="folder-tree" class="w-3.5 h-3.5"></i> .group()
+                            </button>
+                            <button onclick="lanzarMedicionTiempo()" class="bg-white hover:bg-indigo-50 border border-indigo-100 text-indigo-600 font-bold py-2 px-3 rounded-xl text-xs flex items-center justify-center gap-1.5 transition-all shadow-sm active:scale-95">
+                                <i data-lucide="clock" class="w-3.5 h-3.5"></i> .time()
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-7 bg-white rounded-3xl p-6 shadow-lg shadow-pink-100/40 border border-pink-100 flex flex-col h-[750px]">
+
+                    <div class="border-b border-pink-100 pb-3 flex flex-wrap gap-2 overflow-x-auto whitespace-nowrap scrollbar-hide">
+                        <button onclick="cambiarTabDoc('gemini-chat')" id="tab-gemini-chat" class="tab-btn py-1.5 px-3.5 rounded-full text-xs font-bold transition-all bg-purple-600 text-white shadow-sm flex items-center gap-1">
+                            <i data-lucide="sparkles" class="w-3.5 h-3.5"></i> IA Chat
+                        </button>
+                        <button onclick="cambiarTabDoc('consola-basicos')" id="tab-consola-basicos" class="tab-btn py-1.5 px-3.5 rounded-full text-xs font-bold transition-all bg-slate-100 text-slate-600 hover:bg-pink-50">
+                            💬 Tareas (Mensajes)
+                        </button>
+                        <button onclick="cambiarTabDoc('console-methods')" id="tab-console-methods" class="tab-btn py-1.5 px-3.5 rounded-full text-xs font-bold transition-all bg-slate-100 text-slate-600 hover:bg-pink-50">
+                            🛠️ Métodos
+                        </button>
+                        <button onclick="cambiarTabDoc('console-tricks')" id="tab-console-tricks" class="tab-btn py-1.5 px-3.5 rounded-full text-xs font-bold transition-all bg-slate-100 text-slate-600 hover:bg-pink-50">
+                            ✨ Trucos Ninja
+                        </button>
+                    </div>
+
+                    <div class="flex-1 overflow-y-auto pt-5 pr-2 space-y-6 text-sm leading-relaxed" id="documentacion-contenido">
+
+                        <div id="content-gemini-chat" class="tab-content block flex flex-col h-full space-y-4">
+                            <div class="p-4 bg-gradient-to-r from-purple-50 to-pink-50 rounded-2xl border border-purple-100">
+                                <h3 class="text-base font-bold text-purple-700 font-fredoka flex items-center gap-1.5 mb-1">
+                                    <i data-lucide="sparkles" class="w-4 h-4 text-purple-500 animate-pulse"></i> Chat Inteligente con Chroma (Gemini IA)
+                                </h3>
+                                <p class="text-xs text-slate-600 leading-relaxed">
+                                    ¡Pregúntale a Chroma sobre desarrollo web! Puedes consultar errores de la consola de Chrome copiándolos y pegándolos, pedirle trucos o que te proponga un reto de JavaScript interactivo.
+                                </p>
+                            </div>
+
+                            <div class="flex-1 border border-purple-100 rounded-2xl bg-slate-50/50 p-4 flex flex-col justify-between h-[360px] overflow-hidden">
+
+                                <div id="chat-mensajes" class="flex-1 overflow-y-auto space-y-3 pr-1 text-xs max-h-[300px]">
+                                    <div class="flex items-start space-x-2">
+                                        <div class="w-7 h-7 bg-purple-200 text-purple-700 rounded-full flex items-center justify-center font-bold text-[10px] shrink-0 font-fredoka">C</div>
+                                        <div class="bg-white p-3 rounded-2xl border border-purple-100 text-slate-700 max-w-[85%] shadow-sm">
+                                            ¡Hola, colega desarrollador! 🌸 Soy Chroma. Pregúntame lo que quieras de JavaScript, CSS, la consola o pégame un error molesto que tengas y lo solucionaremos juntos. ✨
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div id="chat-loading" class="hidden items-center space-x-2 text-xs text-purple-500 italic pb-2 pl-9 animate-pulse">
+                                    <i data-lucide="loader-2" class="w-3.5 h-3.5 animate-spin"></i>
+                                    <span>Chroma está consultando sus apuntes de IA... 🌸</span>
+                                </div>
+
+                                <div class="flex flex-wrap gap-1.5 mb-2.5 pt-2 border-t border-purple-100/50">
+                                    <button onclick="enviarAccionRapida('✨ Explicar un NullPointer')" class="bg-purple-100/60 hover:bg-purple-200 text-purple-700 text-[10px] font-bold px-2.5 py-1 rounded-full transition-all border border-purple-200">✨ Error NullPointer</button>
+                                    <button onclick="enviarAccionRapida('✨ Truco Pro de CSS')" class="bg-purple-100/60 hover:bg-purple-200 text-purple-700 text-[10px] font-bold px-2.5 py-1 rounded-full transition-all border border-purple-200">✨ Truco Pro CSS</button>
+                                    <button onclick="enviarAccionRapida('✨ Dame un reto de consola')" class="bg-purple-100/60 hover:bg-purple-200 text-purple-700 text-[10px] font-bold px-2.5 py-1 rounded-full transition-all border border-purple-200">✨ Dame un Reto</button>
+                                </div>
+
+                                <div class="flex items-center space-x-2 mt-auto">
+                                    <input type="text" id="chat-input" placeholder="Pregúntale a Chroma... (ej: ¿Qué es el DOM?)" class="flex-1 border border-purple-200 rounded-xl px-3 py-2 text-xs focus:outline-none focus:border-purple-400 focus:ring-1 focus:ring-purple-400 bg-white shadow-inner" onkeydown="if(event.key === 'Enter') enviarMensajeChat()">
+                                    <button onclick="enviarMensajeChat()" id="btn-enviar-chat" class="bg-purple-500 hover:bg-purple-600 text-white font-bold py-2.5 px-3.5 rounded-xl text-xs flex items-center justify-center gap-1 transition-all active:scale-95 shadow-md">
+                                        <i data-lucide="send" class="w-3.5 h-3.5"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="content-consola-basicos" class="tab-content hidden">
+                            <div class="space-y-4">
+                                <div class="p-4 bg-pink-50/50 rounded-2xl border border-pink-100">
+                                    <span class="bg-pink-200 text-pink-700 font-bold px-2 py-0.5 rounded-md text-[10px] uppercase">Aprende los Comandos</span>
+                                    <h3 class="text-base font-bold text-pink-600 font-fredoka flex items-center gap-1.5 mt-1">
+                                        <i data-lucide="message-square" class="w-4 h-4"></i> Tareas Básicas de Consola
+                                    </h3>
+                                    <p class="text-xs text-slate-600 mt-2">
+                                        Alimenta a Chroma usando los botones de la izquierda para disparar automáticamente estas tareas y observar el resultado en tu consola real.
+                                    </p>
+                                </div>
+
+                                <div class="border border-slate-100 rounded-2xl p-4 bg-white shadow-sm hover:border-pink-200 transition-all">
+                                    <div class="flex items-center justify-between mb-2">
+                                        <span class="bg-blue-100 text-blue-600 text-xs px-2.5 py-0.5 rounded-md font-bold font-mono">console.log()</span>
+                                        <span class="text-emerald-500 flex items-center gap-1 text-[10px] font-bold"><span class="w-2 h-2 rounded-full bg-emerald-500"></span> Task #1</span>
+                                    </div>
+                                    <p class="text-xs text-slate-600 mb-2">Muestra información general. Es el comando amigo que usarás un millón de veces para debugear.</p>
+                                    <pre class="bg-slate-800 text-emerald-400 p-3 rounded-xl font-mono text-[11px] overflow-x-auto select-all"><code>console.log("🌸 ¡Chroma es genial!");</code></pre>
+                                </div>
+
+                                <div class="border border-slate-100 rounded-2xl p-4 bg-white shadow-sm hover:border-pink-200 transition-all">
+                                    <div class="flex items-center justify-between mb-2">
+                                        <span class="bg-indigo-100 text-indigo-600 text-xs px-2.5 py-0.5 rounded-md font-bold font-mono">console.info()</span>
+                                        <span class="text-indigo-500 flex items-center gap-1 text-[10px] font-bold"><span class="w-2 h-2 rounded-full bg-indigo-500"></span> Task #2</span>
+                                    </div>
+                                    <p class="text-xs text-slate-600 mb-2">Similar a log, pero semánticamente expresa que es un mensaje informativo.</p>
+                                    <pre class="bg-slate-800 text-blue-300 p-3 rounded-xl font-mono text-[11px] overflow-x-auto select-all"><code>console.info("ℹ️ Info: Refrescante.");</code></pre>
+                                </div>
+
+                                <div class="border border-slate-100 rounded-2xl p-4 bg-white shadow-sm hover:border-pink-200 transition-all">
+                                    <div class="flex items-center justify-between mb-2">
+                                        <span class="bg-yellow-100 text-yellow-700 text-xs px-2.5 py-0.5 rounded-md font-bold font-mono">console.warn()</span>
+                                        <span class="text-amber-500 flex items-center gap-1 text-[10px] font-bold"><span class="w-2 h-2 rounded-full bg-amber-500"></span> Task #3</span>
+                                    </div>
+                                    <p class="text-xs text-slate-600 mb-2">Muestra un triángulo amarillo. Alerta sobre posibles problemas sin romper la ejecución.</p>
+                                    <pre class="bg-slate-800 text-amber-400 p-3 rounded-xl font-mono text-[11px] overflow-x-auto select-all"><code>console.warn("⚠️ Cuidado con el ácido.");</code></pre>
+                                </div>
+
+                                <div class="border border-slate-100 rounded-2xl p-4 bg-white shadow-sm hover:border-pink-200 transition-all">
+                                    <div class="flex items-center justify-between mb-2">
+                                        <span class="bg-red-100 text-red-600 text-xs px-2.5 py-0.5 rounded-md font-bold font-mono">console.error()</span>
+                                        <span class="text-red-500 flex items-center gap-1 text-[10px] font-bold"><span class="w-2 h-2 rounded-full bg-red-500"></span> Task #4</span>
+                                    </div>
+                                    <p class="text-xs text-slate-600 mb-2">Genera un mensaje rojo llamativo y almacena el trazo de pila (stack trace) del error crítico.</p>
+                                    <pre class="bg-slate-800 text-red-400 p-3 rounded-xl font-mono text-[11px] overflow-x-auto select-all"><code>console.error("❌ ¡Alerta crítica!");</code></pre>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="content-console-methods" class="tab-content hidden">
+                            <div class="space-y-4">
+                                <p class="text-xs text-slate-500 mb-2 px-2">💡 Usa los "Lanzadores Avanzados" debajo de la mascota para probar estos métodos.</p>
+                                <div class="border border-slate-100 rounded-2xl p-4 bg-slate-50/30 hover:border-pink-200 transition-all">
+                                    <div class="flex justify-between items-start mb-2">
+                                        <span class="bg-emerald-100 text-emerald-600 text-xs px-2.5 py-0.5 rounded-md font-bold font-mono">console.table()</span>
+                                    </div>
+                                    <p class="text-xs text-slate-600 mb-2">Transforma tus matrices y objetos en una hermosa tabla interactiva.</p>
+                                    <pre class="bg-slate-800 text-slate-200 p-3 rounded-xl font-mono text-[11px] overflow-x-auto"><code>console.table([{ id: 1, req: "OK" }]);</code></pre>
+                                </div>
+                                <div class="border border-slate-100 rounded-2xl p-4 bg-slate-50/30 hover:border-pink-200 transition-all">
+                                    <div class="flex justify-between items-start mb-2">
+                                        <span class="bg-orange-100 text-orange-600 text-xs px-2.5 py-0.5 rounded-md font-bold font-mono">console.assert()</span>
+                                    </div>
+                                    <p class="text-xs text-slate-600 mb-2">Escribe un error SOLO si la condición dada es falsa.</p>
+                                    <pre class="bg-slate-800 text-slate-200 p-3 rounded-xl font-mono text-[11px] overflow-x-auto"><code>console.assert(1 === 2, "🚨 Falló");</code></pre>
+                                </div>
+                                <div class="border border-slate-100 rounded-2xl p-4 bg-slate-50/30 hover:border-pink-200 transition-all">
+                                    <div class="flex justify-between items-start mb-2">
+                                        <span class="bg-teal-100 text-teal-600 text-xs px-2.5 py-0.5 rounded-md font-bold font-mono">console.group()</span>
+                                    </div>
+                                    <p class="text-xs text-slate-600 mb-2">Agrupa varios logs en un bloque desplegable para organizar la consola.</p>
+                                </div>
+                                <div class="border border-slate-100 rounded-2xl p-4 bg-slate-50/30 hover:border-pink-200 transition-all">
+                                    <div class="flex justify-between items-start mb-2">
+                                        <span class="bg-purple-100 text-purple-600 text-xs px-2.5 py-0.5 rounded-md font-bold font-mono">console.time()</span>
+                                    </div>
+                                    <p class="text-xs text-slate-600 mb-2">Inicia un temporizador para medir el rendimiento de una operación.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="content-console-tricks" class="tab-content hidden">
+                            <div class="space-y-4">
+                                <div class="p-4 bg-amber-50/50 rounded-2xl border border-amber-100">
+                                    <h3 class="text-base font-bold text-amber-600 font-fredoka flex items-center gap-1.5 mb-1">
+                                        <i data-lucide="zap" class="w-4 h-4"></i> Trucos de Devs Expertos
+                                    </h3>
+                                    <p class="text-xs text-slate-600">Lleva tus habilidades al siguiente nivel con estos secretos:</p>
+                                </div>
+                                <div class="border border-slate-100 rounded-2xl p-4 bg-white hover:border-pink-200 transition-all shadow-sm">
+                                    <h4 class="font-bold text-xs text-slate-800 mb-1">1. Añadir CSS a tus logs</h4>
+                                    <p class="text-xs text-slate-600 mb-2">Usa la bandera <code class="font-mono text-pink-500">%c</code> para que el navegador lea el segundo argumento como CSS.</p>
+                                    <pre class="bg-slate-800 text-slate-200 p-3 rounded-xl font-mono text-[11px] overflow-x-auto"><code>console.log(
+  "%c✨ Chroma ✨",
+  "color: pink; font-weight: bold;"
+);</code></pre>
+                                </div>
+                                <div class="border border-slate-100 rounded-2xl p-4 bg-white hover:border-pink-200 transition-all shadow-sm">
+                                    <h4 class="font-bold text-xs text-slate-800 mb-1">2. Último valor con $_</h4>
+                                    <p class="text-xs text-slate-600">Escribe <code class="font-mono text-pink-500">$_</code> en tu consola y dará como resultado el valor de la última operación ejecutada.</p>
+                                </div>
+                                <div class="border border-slate-100 rounded-2xl p-4 bg-white hover:border-pink-200 transition-all shadow-sm">
+                                    <h4 class="font-bold text-xs text-slate-800 mb-1">3. Seleccionar nodo con $0</h4>
+                                    <p class="text-xs text-slate-600">En la pestaña <strong>Elements</strong> inspecciona algo, luego ve a Console y escribe <code class="font-mono text-pink-500">$0</code>. Obtendrás ese elemento exacto.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div id="toast" class="fixed bottom-6 right-6 bg-slate-900 text-white text-xs py-3.5 px-5 rounded-2xl shadow-2xl transition-all duration-300 transform translate-y-32 opacity-0 z-50 flex items-center space-x-3 max-w-sm">
+        <div class="bg-emerald-500 p-1.5 rounded-lg flex items-center justify-center shadow-inner">
+            <i data-lucide="terminal" class="w-4 h-4 text-white"></i>
+        </div>
+        <div>
+            <p id="toast-title" class="font-bold text-emerald-300">¡Log enviado!</p>
+            <p id="toast-desc" class="text-slate-300 text-[11px] mt-0.5 leading-tight">Mira los resultados en la consola.</p>
+        </div>
+    </div>
+
+    <script src="js/app.js"></script>
+</body>
+</html>
