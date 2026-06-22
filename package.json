@@ -1,0 +1,26 @@
+{
+  "name": "-chroma-devpet",
+  "version": "1.0.0",
+  "description": "Chroma DevPet es una mascota virtual creada para aprender las finciones de la consola de google chorma",
+  "main": "index.js",
+  "scripts": {
+  "dev": "vite",
+  "build": "vite build",
+  "preview": "vite preview"
+},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jeilybaudinoitsu-crypto/-Chroma-DevPet.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/jeilybaudinoitsu-crypto/-Chroma-DevPet/issues"
+  },
+  "homepage": "https://github.com/jeilybaudinoitsu-crypto/-Chroma-DevPet#readme",
+  "devDependencies": {
+    "vite": "^8.0.16"
+  }
+}
